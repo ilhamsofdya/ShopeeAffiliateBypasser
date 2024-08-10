@@ -93,10 +93,13 @@ if ($responseData['success']) {
             $result = $longUrl;
         }
         echo $result;
+        echo "\n";
     } else {
         // Jika 'shp.ee' tidak ditemukan dalam URL
         echo $longUrl;
+        echo "\n";
     }
 } else {
     echo $responseData['message'];
+    echo "\n";
 }
