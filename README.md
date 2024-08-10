@@ -1,3 +1,6 @@
+<img width="440" alt="Untitled" src="https://github.com/user-attachments/assets/6899e5dd-1083-47bd-b28e-53caf7279495">
+
+
 Untuk bypass link Affilate Shopee menjadi original link
 Selain itu bisa juga untuk:
 shp.ee,
