@@ -4,8 +4,8 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'https://unshorten.it/');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt'); // Save cookies to a file
-curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt'); // Read cookies from the file
+curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies.txt'); // Save cookies to a file
+curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookies.txt'); // Read cookies from the file
 
 // Execute GET request to fetch CSRF token
 $getResponse = curl_exec($ch);
@@ -61,13 +61,6 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
 // Execute POST request
 $response = curl_exec($ch);
 
-// Check for cURL errors
-if (curl_errno($ch)) {
-    echo 'cURL error: ' . curl_error($ch);
-    curl_close($ch);
-    exit;
-}
-
 // Close the cURL session
 curl_close($ch);
 
@@ -84,19 +77,18 @@ if ($responseData['success']) {
     // Mengambil URL
     $longUrl = $responseData['long_url'];
 
-    // Memeriksa apakah 'shopee' ada dalam URL
-    if (strpos($longUrl, 'shopee') !== false) {
+    // Memeriksa apakah 'product' ada dalam URL
+    if (strpos($longUrl, 'product') !== false) {
         // Mengambil bagian dari URL sebelum tanda '?'
         $result = strstr($longUrl, '?', true);
         if ($result === false) {
             // Jika tidak ada tanda '?', maka gunakan URL aslinya
             $result = $longUrl;
         }
-        echo $result;
-        echo "\n";
+        echo "\033[32m" . $result . "\033[0m\n";
     } else {
-        // Jika 'shp.ee' tidak ditemukan dalam URL
-        echo $longUrl;
+        // Jika 'product' tidak ditemukan dalam URL
+        echo "\033[32m" . $longUrl . "\033[0m\n";
         echo "\n";
     }
 } else {
